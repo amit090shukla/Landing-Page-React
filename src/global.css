@@ -1,0 +1,28 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Roboto",
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
+}
+button {
+  outline: none;
+}
+
+/* These are some frequently used classes */
+
+.d-f {
+  display: flex;
+}
+
+.c-a {
+  align-items: center;
+}
+.full-width {
+  width: 100%;
+}
