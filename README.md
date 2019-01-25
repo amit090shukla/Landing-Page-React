@@ -1,3 +1,6 @@
+Landing Page Website using React + TS + Material UI.<br>
+![](page.gif)
+
 ## Available Scripts
 
 In the project directory, you can run:
