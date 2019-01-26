@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { FaDelicious } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { NAV_ITEMS } from "../data/rawData";
 
 const styles = (theme: Theme): any => ({
@@ -85,14 +86,20 @@ const styles = (theme: Theme): any => ({
 
 interface Props {
   classes: any;
-  active: String;
   contactSectionRef: any;
 }
 
-class Header extends React.Component<Props, any> {
-  state = {
+interface State {
+  anchorEl: null;
+  mobileMoreAnchorEl: null;
+  active: String;
+}
+
+class Header extends React.Component<Props, State> {
+  state: State = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    active: "home"
   };
 
   scrollToContact = () => {
@@ -110,7 +117,6 @@ class Header extends React.Component<Props, any> {
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const renderMobileMenu = (
@@ -146,7 +152,7 @@ class Header extends React.Component<Props, any> {
         </MenuItem>
       </Menu>
     );
-    const { active } = this.props;
+    const { active } = this.state;
     return (
       <div className={classes.root}>
         <AppBar
@@ -155,18 +161,21 @@ class Header extends React.Component<Props, any> {
         >
           <Toolbar>
             <FaDelicious className={classes.logoIcon} />
-            <Typography className={classes.logo}>Kiehn PLC	</Typography>
+            <Typography className={classes.logo}>Kiehn PLC </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               {NAV_ITEMS.map((item, index) => (
-                <Typography
-                  key={index}
-                  className={`${classes.link} ${
-                    active == item.id ? classes.active : ""
-                  }`}
-                >
-                  {item.name}
-                </Typography>
+                <Link to={item.to}>
+                  <Typography
+                    key={index}
+                    className={`${classes.link} ${
+                      active == item.id ? classes.active : ""
+                    }`}
+                    onClick={() => this.setState({ active: item.id })}
+                  >
+                    {item.name}
+                  </Typography>
+                </Link>
               ))}
               <span className={classes.navDivider}> | </span>
               <button

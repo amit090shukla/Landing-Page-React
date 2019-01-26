@@ -80,7 +80,7 @@ Feel free to get in touch with us. We are always open to discussing new projects
 ];
 
 export const NAV_ITEMS = [
-  { name: "HOME", id: "home" },
-  { name: "SPECIFICATIONS", id: "spec" },
-  { name: "JOIN US", id: "join" }
+  { name: "HOME", id: "home", to: "/" },
+  { name: "SPECIFICATIONS", id: "spec", to: "/spec" },
+  { name: "JOIN US", id: "join", to: "/join" }
 ];
